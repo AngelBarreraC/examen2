@@ -6,6 +6,10 @@
 }
 .App {
   text-align: center;
+  padding-bottom: 50px;
+}
+.ima{
+  padding: 10px;
 }
 
 .App-logo {

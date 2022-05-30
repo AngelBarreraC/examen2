@@ -22,7 +22,7 @@ function Appis (){
             });
             setData(result.data)
             setVist(parseInt(vis)+1)
-            if(vis%2 == 0){
+            if(vis%2 === 0){
                 document.getElementById("vision").style.display='none';
             }else{
                 document.getElementById("vision").style.display='block';
@@ -46,9 +46,8 @@ function Appis (){
                 data: formData
             });
             setImage(result.data)
-            console.log(image.data)
             setVist1(parseInt(vis1)+1)
-            if(vis1%2 == 0){
+            if(vis1%2 != 0){
                 document.getElementById("vision2").style.display='none';
             }else{
                 document.getElementById("vision2").style.display='block';
@@ -60,11 +59,11 @@ function Appis (){
     return(
         <div className="content">
             <form>
-                <div className="row">
-                    <div className="col-6">
+                <div className="row App">
+                    <div className="col-md-6">
                         <button type="button" class="btn btn-outline-primary" id="1" onClick={(getData)}>primary</button>
                     </div>
-                    <div className="col-6" >
+                    <div className="col-md-6" >
                         <button type="button" className="btn btn-outline-primary" id="2" onClick={(getImage)}>Primary</button>
                     </div>
                 </div>
@@ -94,8 +93,8 @@ function Appis (){
             </table>
             <div class="row" id="vision2 im">{
                 image.map( (data) =>
-                    <div class="col-md-3">
-                    <img src="{image.data.url}" alt="..." class="img-thumbnail"></img>
+                    <div class="col-md-3 ima">
+                    <img src={data.url} alt="{data.url}" class="img-thumbnail"></img>
                 </div>
                 )
             }
