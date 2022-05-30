@@ -8,8 +8,10 @@ import './App.css';
 function Appis (){
     const[dat,setData]=useState([]);
     const[vis,setVist]=useState(1);
+    const[vis1,setVist1]=useState(1)
     const getData = async () =>{
         try{
+            setVist(vis+1)
             let formData = new FormData();
             const url = "https://jsonplaceholder.typicode.com/posts";
 
@@ -21,20 +23,22 @@ function Appis (){
                 data: formData
             });
             setData(result.data)
-            setVist(parseInt(vis)+1)
-            if(vis%2 === 0){
-                document.getElementById("vision").style.display='none';
-            }else{
+            if(vis%2 != 0){
                 document.getElementById("vision").style.display='block';
+                
+            }else{
+                document.getElementById("vision").style.display='none';
+
             }
         }catch (error) {
             console.log(error);  
         }
     }
     const[image,setImage]=useState([]);
-    const[vis1,setVist1]=useState(1)
+    
     const getImage = async () =>{
         try{
+            setVist1(vis1+1)
             let formData = new FormData();
             const url = "https://jsonplaceholder.typicode.com/photos";
 
@@ -46,11 +50,13 @@ function Appis (){
                 data: formData
             });
             setImage(result.data)
-            setVist1(parseInt(vis1)+1)
+            
             if(vis1%2 != 0){
-                document.getElementById("vision2").style.display='none';
-            }else{
                 document.getElementById("vision2").style.display='block';
+
+            }else{
+                document.getElementById("vision2").style.display='none';
+                
             }
         }catch (error) {
             console.log(error);  
@@ -69,6 +75,7 @@ function Appis (){
                 </div>
             </form>
             <table className="table" id="vision" >
+                
                 <thead>
                     <tr>
                         <th scope="col"> UserID </th>
@@ -79,7 +86,7 @@ function Appis (){
                     </tr>
                 </thead>
                 <tbody>
-                {
+                { 
                     dat.map( (data)=> 
                     <tr key={"celda"+data.userId}>
                         <td key={"userId"+data.userId}>{data.userId}</td> 
@@ -91,13 +98,17 @@ function Appis (){
                 }
                 </tbody>
             </table>
-            <div class="row" id="vision2 im">{
+            <div class="container" id="vision2 im">
+                <div class="row" id="vision2 im">
+                {
                 image.map( (data) =>
                     <div class="col-md-3 ima">
                     <img src={data.url} alt="{data.url}" class="img-thumbnail"></img>
                 </div>
                 )
             }
+                </div>
+                
             
             </div> 
         </div>
